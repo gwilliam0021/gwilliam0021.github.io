@@ -1,0 +1,7 @@
+﻿Limit-EventLog -LogName Security -maximumsize 512MB
+Limit-EventLog -LogName Application -MaximumSize 256KB
+Limit-EventLog -logname System -MaximumSize 256KB
+Limit-EventLog -LogName 'Windows PowerShell' -MaximumSize 256KBFunction Enable-Policy {    [CmdletBinding()]
+    param (
+        [string]$PolicyName
+    )    Auditpol /set /subcategory:"$policyName" /success:enable /failure:enable}function Enable-Log {    [CmdletBinding()]    param (        [string]$LogName        )        wevtutil "$LogName" /e:True}Enable-Policy "Credential Validation"enable-Policy "Other Account Logon Events"Enable-Policy "Application Group Management"Enable-Policy "Computer Account Management"Enable-Policy "Distribution Group Management"Enable-Policy "Other Account Management Events"Enable-Policy "Security Group Management"Enable-Policy "Process Creation"Enable-Policy "RPC Events"Enable-Policy "Directory Service Changes"Enable-Policy "Logon"Enable-Policy "Network Policy Server"Enable-Policy "Other Logon/Logoff Events"Enable-Policy "Special Logon"Enable-Policy "Application Generated"Enable-Policy "Certification Services"Enable-Policy "File Share"Enable-Policy "Removable Storage"Enable-Policy "Audit Policy Change"Enable-Policy "Authentication Policy Change"Enable-Policy "Authorization Policy Change"Enable-Policy "Sensitive Privilege Use"Enable-Policy "Security State Change"Enable-Policy "Security System Extension"Enable-Policy "System Integrity"Enable-Policy "Account Lockout"

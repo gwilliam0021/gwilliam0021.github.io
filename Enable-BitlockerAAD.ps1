@@ -1,0 +1,2 @@
+﻿Enable-BitLocker -MountPoint C: -RecoveryPasswordProtector -UsedSpaceOnly
+get-bitlockervolume -mountpoint C: | Select-object -expand keyprotector | select-object keyprotectorid | foreach-object -process {manage-bde -protectors C: -aadbackup -id $_.keyprotectorid}
