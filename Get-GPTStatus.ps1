@@ -1,0 +1,2 @@
+﻿$RetunValue = 0
+Get-Disk | ForEach-Object -Process {if ($_.PartitionStyle -ne "GPT") {Write-Host "Possible Bios Issue. MBR not supported by UEFI"; $RetunValue = ($RetunValue+1)} else {write-host "Disk-OK!"}}
